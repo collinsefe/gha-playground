@@ -8,14 +8,14 @@ RUN go mod download
 
 COPY *.go ./
 
-RUN go build -o /lesson-086
+RUN go build -o /gha-playground
 
 FROM gcr.io/distroless/base-debian10
 
 WORKDIR /
 
-COPY --from=build /lesson-086 /lesson-086
+COPY --from=build /gha-playground /gha-playground
 
 USER nonroot:nonroot
 
-ENTRYPOINT ["/lesson-086"]
+ENTRYPOINT ["/gha-playground"]
